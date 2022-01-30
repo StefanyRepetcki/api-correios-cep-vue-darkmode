@@ -10,17 +10,6 @@
       />
 
       <v-img
-        v-if="!$vuetify.theme.dark"
-        :src="require('@/assets/correios.svg')"
-        class="logo mr-5"
-        contain
-        height="48"
-        width="100"
-        max-width="100"
-        @click="$vuetify.goTo(0)"
-      />
-      <v-img
-        v-if="$vuetify.theme.dark"
         :src="require('@/assets/correios.svg')"
         class="logo mr-5"
         contain
@@ -46,7 +35,7 @@
             </v-btn>
             <v-text-field
               v-model.trim="texto"
-              v-mask="'###.###.###-##'"
+              v-mask="'##.###-###'"
               placeholder="Pesquisar CEP"
               append-icon="mdi-magnify"
               flat
