@@ -45,9 +45,9 @@
           <v-text-field
             ref="pais"
             v-model="endereco.pais"
-            label="Pais"
+            label="País"
             required
-            placeholder="PR"
+            placeholder="País"
           />
         </v-card-text>
       </v-card>
