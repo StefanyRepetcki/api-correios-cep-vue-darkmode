@@ -3,11 +3,11 @@
         {
             "type": "aws-sam",
             "request": "direct-invoke",
-            "name": "vue-api-youtube:src/components/home/about.service.buscarYoutube (nodejs12.x)",
+            "name": "vue-api-correios:src/components/home/About.service.buscarCorreios (nodejs12.x)",
             "invokeTarget": {
                 "target": "code",
                 "projectRoot": "${workspaceFolder}/",
-                "lambdaHandler": "src/components/home/about.service.buscarYoutube"
+                "lambdaHandler": "src/components/home/About.service.buscarCorreios"
             },
             "lambda": {
                 "runtime": "nodejs12.x",
