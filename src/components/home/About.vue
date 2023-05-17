@@ -9,9 +9,7 @@
       md="8"
       lg="6"
     >
-      <v-card
-        ref="form"
-      >
+      <v-card ref="form">
         <v-card-text>
           Cep: {{ getTextoBuscar }}
           <v-text-field
@@ -56,39 +54,48 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-  import { buscarCorreios } from './About.service.js'
+import { mapGetters } from 'vuex';
+import { buscarCorreios } from './About.service.js';
 
-  export default {
-    name: 'HomeCorreios',
-    data () {
-      return {
-        endereco: {
-          rua: null,
-          bairro: null,
-          cidade: null,
-          estado: null,
-          pais: null,
-          status: false,
-        },
+export default {
+  name: 'About',
+  data() {
+    return {
+      endereco: {
+        rua: null,
+        bairro: null,
+        cidade: null,
+        estado: null,
+        pais: null,
+        status: false,
+      },
+    };
+  },
+  computed: {
+    ...mapGetters(['getTextoBuscar']),
+  },
+  watch: {
+    getTextoBuscar(newValue) {
+      this.init(newValue);
+    },
+  },
+  methods: {
+    async init(params) {
+      const { data } = await buscarCorreios(params);
+      console.log(data, 'dereco')
+      this.endereco = {
+        rua: data.Endereco,
+        bairro: data.Bairro,
+        cidade: data.Cidade,
+        estado: data.UF,
+        pais: data.Pais,
+        status: data.Status,
       }
     },
-    computed: {
-      ...mapGetters(['getTextoBuscar']),
-    },
-    watch: {
-      getTextoBuscar (newValue, oldValue) {
-        this.init(newValue)
-      },
-    },
-    methods: {
-      async init (params) {
-        const { enderecoCompleto } = await buscarCorreios(params)
-        this.endereco = enderecoCompleto
-      },
-    },
-  }
+  },
+};
 </script>
+
 <style scoped>
 #about {
   margin: 2%;

@@ -9,13 +9,15 @@
 </template>
 
 <script>
-  export default {
-    name: 'App',
+import CoreFooter from '@/components/core/Footer';
+import CoreAppBar from '@/components/core/AppBar';
+import CoreView from '@/components/core/View';
 
+export default {
     components: {
-      CoreFooter: () => import('@/components/core/Footer'),
-      CoreAppBar: () => import('@/components/core/AppBar'),
-      CoreView: () => import('@/components/core/View'),
+      CoreFooter,
+      CoreAppBar,
+      CoreView,
     },
-  }
+};
 </script>

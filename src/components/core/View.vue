@@ -1,15 +1,11 @@
 <template>
-  <v-content id="home">
+  <v-main id="home">
     <router-view />
-  </v-content>
+  </v-main>
 </template>
 
 <script>
   export default {
     name: 'CoreView',
-    data () {
-      return {
-      }
-    },
   }
 </script>

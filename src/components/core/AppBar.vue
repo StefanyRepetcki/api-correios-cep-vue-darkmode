@@ -4,11 +4,6 @@
       dense
       height="68"
     >
-      <v-app-bar-nav-icon
-        class="hidden-md-and-up"
-        @click="toggleDrawer"
-      />
-
       <v-img
         :src="require('@/assets/correios.svg')"
         class="logo mr-5"
@@ -21,9 +16,7 @@
 
       <v-card>
         <v-row class="header">
-          <div
-            class="search"
-          >
+          <div class="search">
             <v-btn
               v-for="(link, i) in links"
               :key="i"
@@ -52,11 +45,12 @@
         left
         bottom
       >
-        <template v-slot:activator="{ on, attrs }">
+        <template v-slot:activator="{ on }">
           <div>
             <v-tooltip
               v-if="!$vuetify.theme.dark"
               bottom
+              v-on="{ on }"
             >
               <template v-slot:activator="{ on }">
                 <v-btn
@@ -101,47 +95,48 @@
 </template>
 
 <script>
-  export default {
-    name: 'CoreAppBar',
-    data () {
-      return {
-        texto: '',
-        links: [],
-      }
+export default {
+  name: "CoreAppBar",
+  data() {
+    return {
+      texto: "",
+      links: [],
+    };
+  },
+  methods: {
+    darkMode() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     },
-    methods: {
-      darkMode () {
-        this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      },
-      onClick () {
-        this.$store.commit('setTextoBuscar', this.texto)
-      },
+    onClick() {
+      this.$store.commit("setTextoBuscar", this.texto);
     },
-  }
+  },
+};
 </script>
+
 <style scoped lang="scss">
-  .header {
-      -webkit-text-size-adjust: none;
-      margin: 0;
-      border: 0;
-      background: transparent;
-      height: 56px;
-      padding: 0 16px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-  }
-  .search {
-      -webkit-text-size-adjust: none;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      flex: 0 1 728px;
-      min-width: 0px;
-  }
+.header {
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search {
+  -webkit-text-size-adjust: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0 1 728px;
+}
 </style>
